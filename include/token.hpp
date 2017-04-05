@@ -17,6 +17,7 @@ class Token {
   Token(TokenKind k) : kind(k) {
   }
   virtual ~Token() = 0;
+  virtual Token *clone() const = 0;
   TokenKind
   getKind() const {
     return kind;
@@ -37,6 +38,11 @@ class IdentTok : public Token {
       : Token(TokenKind::Identifier), ident(i) {
   }
   ~IdentTok() override = default;
+  Token *
+  clone() const override {
+    IdentTok *copy = new IdentTok(*this);
+    return copy;
+  }
   static bool
   classof(const Token *T) {
     return T->getKind() == TokenKind::Identifier;
@@ -55,6 +61,11 @@ class KeywordTok : public Token {
       : Token(TokenKind::Keyword), keyword(k) {
   }
   ~KeywordTok() override = default;
+  Token *
+  clone() const override {
+    KeywordTok *copy = new KeywordTok(*this);
+    return copy;
+  }
   static bool
   classof(const Token *T) {
     return T->getKind() == TokenKind::Keyword;
@@ -72,6 +83,11 @@ class DigitTok : public Token {
   DigitTok(int num) : Token(TokenKind::Digit), number(num) {
   }
   ~DigitTok() override = default;
+  Token *
+  clone() const override {
+    DigitTok *copy = new DigitTok(*this);
+    return copy;
+  }
   static bool
   classof(const Token *T) {
     return T->getKind() == TokenKind::Digit;
@@ -89,6 +105,11 @@ class SymbolTok : public Token {
   SymbolTok(char s) : Token(TokenKind::Symbol), symbol(s) {
   }
   ~SymbolTok() override = default;
+  Token *
+  clone() const override {
+    SymbolTok *copy = new SymbolTok(*this);
+    return copy;
+  }
   static bool
   classof(const Token *T) {
     return T->getKind() == TokenKind::Symbol;

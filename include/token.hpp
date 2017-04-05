@@ -1,6 +1,7 @@
 #ifndef TOKEN_HPP
 #define TOKEN_HPP
 
+#include <memory>
 #include <string>
 
 enum class TokenKind {
@@ -24,6 +25,8 @@ class Token {
   private:
   const TokenKind kind;
 };
+
+using TokenRef = std::shared_ptr<Token>;
 
 class IdentTok : public Token {
   public:

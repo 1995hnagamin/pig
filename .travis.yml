@@ -1,0 +1,16 @@
+sudo: required
+dist: trusty
+language: cpp
+compiler:
+  - clang-3.9
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+script:
+  - export CXX="clang++-3.9";
+  - $CXX --version
+  - mkdir build
+  - cd build
+  - cmake ..
+  - VERBOSE=1 make

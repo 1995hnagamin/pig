@@ -1,15 +1,12 @@
 sudo: required
 dist: trusty
 language: cpp
-compiler:
-  - clang-3.6
+compiler: clang
 addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
 script:
-  - export CXX="clang++-3.6";
-  - $CXX --version
   - mkdir build
   - cd build
   - cmake ..

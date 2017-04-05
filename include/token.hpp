@@ -40,5 +40,20 @@ class IdentTok : public Token {
   std::string ident;
 };
 
+class KeywordTok : public Token {
+  public:
+  KeywordTok(const std::string &k)
+      : Token(TokenKind::Keyword), keyword(k) {
+  }
+  ~KeywordTok() override = default;
+  static bool
+  classof(const Token *T) {
+    return T->getKind() == TokenKind::Keyword;
+  }
+
+  private:
+  std::string keyword;
+};
+
 
 #endif /*! TOKEN_HPP */

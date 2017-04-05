@@ -1,0 +1,13 @@
+sudo: required
+dist: trusty
+language: cpp
+compiler: clang
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+script:
+  - mkdir build
+  - cd build
+  - cmake ..
+  - VERBOSE=1 make

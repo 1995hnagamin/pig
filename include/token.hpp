@@ -55,5 +55,19 @@ class KeywordTok : public Token {
   std::string keyword;
 };
 
+class DigitTok : public Token {
+  public:
+  DigitTok(int num) : Token(TokenKind::Digit), number(num) {
+  }
+  ~DigitTok() override = default;
+  static bool
+  classof(const Token *T) {
+    return T->getKind() == TokenKind::Digit;
+  }
+
+  private:
+  int number;
+};
+
 
 #endif /*! TOKEN_HPP */

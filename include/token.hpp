@@ -9,4 +9,18 @@ enum class TokenKind {
   Eof,
 };
 
+class Token {
+  public:
+  Token(TokenKind k) : kind(k) {
+  }
+  virtual ~Token() = 0;
+  TokenKind
+  getKind() const {
+    return kind;
+  }
+
+  private:
+  const TokenKind kind;
+};
+
 #endif /*! TOKEN_HPP */

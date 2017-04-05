@@ -36,7 +36,7 @@ class IdentTok : public Token {
   ~IdentTok() override = default;
   static bool
   classof(const Token *T) {
-    return T->gteKind() == TokenKind::Identifier;
+    return T->getKind() == TokenKind::Identifier;
   }
 
   private:
@@ -76,7 +76,7 @@ class SymbolTok : public Token {
   public:
   SymbolTok(char s) : Token(TokenKind::Symbol), symbol(s) {
   }
-  ~Symbol() override = default;
+  ~SymbolTok() override = default;
   static bool
   classof(const Token *T) {
     return T->getKind() == TokenKind::Symbol;

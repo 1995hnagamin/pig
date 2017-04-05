@@ -3,6 +3,7 @@
 
 enum class TokenKind {
   Identifier,
+  Keyword,
   Digit,
   Symbol,
   Eof,

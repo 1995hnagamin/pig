@@ -69,5 +69,18 @@ class DigitTok : public Token {
   int number;
 };
 
+class SymbolTok : public Token {
+  public:
+  SymbolTok(char s) : Token(TokenKind::Symbol), symbol(s) {
+  }
+  ~Symbol() override = default;
+  static bool
+  classof(const Token *T) {
+    return T->getKind() == TokenKind::Symbol;
+  }
+
+  private:
+  char symbol;
+};
 
 #endif /*! TOKEN_HPP */

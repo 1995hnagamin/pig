@@ -22,6 +22,9 @@ class Token {
     return kind;
   }
 
+  protected:
+  Token(const Token &) = default;
+
   private:
   const TokenKind kind;
 };
@@ -39,6 +42,9 @@ class IdentTok : public Token {
     return T->getKind() == TokenKind::Identifier;
   }
 
+  protected:
+  IdentTok(const IdentTok &) = default;
+
   private:
   std::string ident;
 };
@@ -54,6 +60,9 @@ class KeywordTok : public Token {
     return T->getKind() == TokenKind::Keyword;
   }
 
+  protected:
+  KeywordTok(const KeywordTok &) = default;
+
   private:
   std::string keyword;
 };
@@ -68,6 +77,9 @@ class DigitTok : public Token {
     return T->getKind() == TokenKind::Digit;
   }
 
+  protected:
+  DigitTok(const DigitTok &) = default;
+
   private:
   int number;
 };
@@ -81,6 +93,9 @@ class SymbolTok : public Token {
   classof(const Token *T) {
     return T->getKind() == TokenKind::Symbol;
   }
+
+  protected:
+  SymbolTok(const SymbolTok &) = default;
 
   private:
   char symbol;

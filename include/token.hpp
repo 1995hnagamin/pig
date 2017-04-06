@@ -122,4 +122,20 @@ class SymbolTok : public Token {
   char symbol;
 };
 
+class EofTok : public Token {
+  public:
+  EofTok() : Token(TokenKind::Eof) {
+  }
+  ~EofTok() override = default;
+  Token *
+  clone() const override {
+    EofTok *eof = new EofTok();
+    return eof;
+  }
+  static bool
+  classof(const Token *T) {
+    return T->getKind() == TokenKind::Eof;
+  }
+};
+
 #endif /*! TOKEN_HPP */

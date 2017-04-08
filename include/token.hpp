@@ -44,6 +44,7 @@ class IdentTok : public Token {
     IdentTok *copy = new IdentTok(*this);
     return copy;
   }
+  std::string to_string() const override;
   static bool
   classof(const Token *T) {
     return T->get_kind() == TokenKind::Identifier;
@@ -67,6 +68,7 @@ class KeywordTok : public Token {
     KeywordTok *copy = new KeywordTok(*this);
     return copy;
   }
+  std::string to_string() const override;
   static bool
   classof(const Token *T) {
     return T->get_kind() == TokenKind::Keyword;
@@ -89,6 +91,7 @@ class DigitTok : public Token {
     DigitTok *copy = new DigitTok(*this);
     return copy;
   }
+  std::string to_string() const override;
   static bool
   classof(const Token *T) {
     return T->get_kind() == TokenKind::Digit;
@@ -111,6 +114,7 @@ class SymbolTok : public Token {
     SymbolTok *copy = new SymbolTok(*this);
     return copy;
   }
+  std::string to_string() const override;
   static bool
   classof(const Token *T) {
     return T->get_kind() == TokenKind::Symbol;
@@ -133,6 +137,7 @@ class EofTok : public Token {
     EofTok *eof = new EofTok();
     return eof;
   }
+  std::string to_string() const override;
   static bool
   classof(const Token *T) {
     return T->get_kind() == TokenKind::Eof;

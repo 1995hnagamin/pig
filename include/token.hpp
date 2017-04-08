@@ -138,4 +138,10 @@ class EofTok : public Token {
   }
 };
 
+TokenRef make_ident_token(const std::string &);
+TokenRef make_keyword_token(const std::string &);
+TokenRef make_digit_token(int);
+TokenRef make_symbol_token(char);
+TokenRef make_eof_token();
+
 #endif /*! TOKEN_HPP */

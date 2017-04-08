@@ -9,11 +9,11 @@ class TokenStream {
   TokenStream() : cur_index(0), tokens() {
   }
   ~TokenStream() = default;
-  bool ungetToken(size_t times = 1);
+  bool unget_token(size_t times = 1);
   bool improve();
-  bool pushToken(const TokenRef &);
-  TokenRef getToken() const;
-  TokenKind getTokenKind() const;
+  bool push_token(const TokenRef &);
+  TokenRef get_token() const;
+  TokenKind get_token_kind() const;
 
   private:
   size_t cur_index;

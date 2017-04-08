@@ -19,7 +19,7 @@ class Token {
   virtual ~Token() = 0;
   virtual Token *clone() const = 0;
   TokenKind
-  getKind() const {
+  get_kind() const {
     return kind;
   }
 
@@ -45,7 +45,7 @@ class IdentTok : public Token {
   }
   static bool
   classof(const Token *T) {
-    return T->getKind() == TokenKind::Identifier;
+    return T->get_kind() == TokenKind::Identifier;
   }
 
   protected:
@@ -68,7 +68,7 @@ class KeywordTok : public Token {
   }
   static bool
   classof(const Token *T) {
-    return T->getKind() == TokenKind::Keyword;
+    return T->get_kind() == TokenKind::Keyword;
   }
 
   protected:
@@ -90,7 +90,7 @@ class DigitTok : public Token {
   }
   static bool
   classof(const Token *T) {
-    return T->getKind() == TokenKind::Digit;
+    return T->get_kind() == TokenKind::Digit;
   }
 
   protected:
@@ -112,7 +112,7 @@ class SymbolTok : public Token {
   }
   static bool
   classof(const Token *T) {
-    return T->getKind() == TokenKind::Symbol;
+    return T->get_kind() == TokenKind::Symbol;
   }
 
   protected:
@@ -134,7 +134,7 @@ class EofTok : public Token {
   }
   static bool
   classof(const Token *T) {
-    return T->getKind() == TokenKind::Eof;
+    return T->get_kind() == TokenKind::Eof;
   }
 };
 

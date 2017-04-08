@@ -18,6 +18,7 @@ class Token {
   }
   virtual ~Token() = 0;
   virtual Token *clone() const = 0;
+  virtual std::string to_string() const = 0;
   TokenKind
   get_kind() const {
     return kind;

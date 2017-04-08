@@ -18,6 +18,11 @@ main(int argc, char **argv) {
     show_help(argv[0]);
     return 0;
   }
-  const auto tokens = lex_from_file(argv[1]);
+  auto tokens = lex_from_file(argv[1]);
+  do {
+    const auto token = tokens->get_token();
+    std::cout << token->to_string() << "\t";
+  } while (tokens->improve());
+  std::cout << std::endl;
   return 0;
 }

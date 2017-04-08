@@ -1,8 +1,8 @@
-#include "token.hpp"
+#include "lexer.hpp"
 #include <iostream>
 
 int
-main() {
-  std::cout << "Hello, World" << std::endl;
+main(int argc, char **argv) {
+  const auto tokens = lex_from_file(argv[1]);
   return 0;
 }

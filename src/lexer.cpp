@@ -102,6 +102,7 @@ lex_from_file(const std::string &input_file) {
       stream->push_token(token);
     }
   }
+  stream->push_token(make_eof_token());
 
   ifs.close();
   return std::unique_ptr<TokenStream>(stream);

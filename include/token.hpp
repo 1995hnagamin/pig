@@ -18,8 +18,9 @@ class Token {
   }
   virtual ~Token() = 0;
   virtual Token *clone() const = 0;
+  virtual std::string to_string() const = 0;
   TokenKind
-  getKind() const {
+  get_kind() const {
     return kind;
   }
 
@@ -43,9 +44,10 @@ class IdentTok : public Token {
     IdentTok *copy = new IdentTok(*this);
     return copy;
   }
+  std::string to_string() const override;
   static bool
   classof(const Token *T) {
-    return T->getKind() == TokenKind::Identifier;
+    return T->get_kind() == TokenKind::Identifier;
   }
 
   protected:
@@ -66,9 +68,10 @@ class KeywordTok : public Token {
     KeywordTok *copy = new KeywordTok(*this);
     return copy;
   }
+  std::string to_string() const override;
   static bool
   classof(const Token *T) {
-    return T->getKind() == TokenKind::Keyword;
+    return T->get_kind() == TokenKind::Keyword;
   }
 
   protected:
@@ -88,9 +91,10 @@ class DigitTok : public Token {
     DigitTok *copy = new DigitTok(*this);
     return copy;
   }
+  std::string to_string() const override;
   static bool
   classof(const Token *T) {
-    return T->getKind() == TokenKind::Digit;
+    return T->get_kind() == TokenKind::Digit;
   }
 
   protected:
@@ -110,9 +114,10 @@ class SymbolTok : public Token {
     SymbolTok *copy = new SymbolTok(*this);
     return copy;
   }
+  std::string to_string() const override;
   static bool
   classof(const Token *T) {
-    return T->getKind() == TokenKind::Symbol;
+    return T->get_kind() == TokenKind::Symbol;
   }
 
   protected:
@@ -132,10 +137,17 @@ class EofTok : public Token {
     EofTok *eof = new EofTok();
     return eof;
   }
+  std::string to_string() const override;
   static bool
   classof(const Token *T) {
-    return T->getKind() == TokenKind::Eof;
+    return T->get_kind() == TokenKind::Eof;
   }
 };
+
+TokenRef make_ident_token(const std::string &);
+TokenRef make_keyword_token(const std::string &);
+TokenRef make_digit_token(int);
+TokenRef make_symbol_token(char);
+TokenRef make_eof_token();
 
 #endif /*! TOKEN_HPP */

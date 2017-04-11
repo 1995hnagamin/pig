@@ -1,7 +1,7 @@
 #include "token_stream.hpp"
 
 bool
-TokenStream::ungetToken(size_t times) {
+TokenStream::unget_token(size_t times) {
   if (cur_index > times) {
     return false;
   }
@@ -19,17 +19,17 @@ TokenStream::improve() {
 }
 
 bool
-TokenStream::pushToken(const TokenRef &token) {
+TokenStream::push_token(const TokenRef &token) {
   tokens.push_back(token);
   return true;
 }
 
 TokenRef
-TokenStream::getToken() const {
+TokenStream::get_token() const {
   return tokens.at(cur_index);
 }
 
 TokenKind
-TokenStream::getTokenKind() const {
-  return getToken()->getKind();
+TokenStream::get_token_kind() const {
+  return get_token()->get_kind();
 }

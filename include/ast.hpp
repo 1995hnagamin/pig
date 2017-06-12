@@ -16,7 +16,7 @@ enum class AstKind {
 
 class Ast;
 
-using AstRef = std::shared_ptr<Ast>;
+using AstRef = Ast*;
 
 class Ast {
   public:

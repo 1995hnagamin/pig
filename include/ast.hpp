@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include "llvm/Support/Casting.h"
 
 enum class AstKind {
   Variable,
@@ -12,6 +13,7 @@ enum class AstKind {
   CallExpr,
   VariableDecl,
   JumpStmt,
+  CompStmt,
 };
 
 class Ast;
@@ -178,6 +180,32 @@ class JumpStmtAst : public Ast {
 
   private:
   AstRef expr;
+};
+
+class CompStmtAst : public Ast {
+  public:
+  using DeclRef = VariableDeclAst*;
+  CompStmtAst(const std::vector<DeclRef> &ds, const std::vector<AstRef> &ss) :
+    Ast(AstKind::CompStmt), decls(ds), stmts(ss) {
+  }
+  ~CompStmtAst() override = default;
+  AstRef
+  clone() const override {
+    std::vector<DeclRef> ds;
+    for (auto &&d : decls) {
+      ds.push_back(llvm::dyn_cast<VariableDeclAst>(d->clone()));
+    }
+    std::vector<AstRef> ss;
+    for (auto &&s : stmts) {
+      ss.push_back(s->clone());
+    }
+    CompStmtAst *copy = new CompStmtAst(ds, ss);
+    return static_cast<AstRef>(copy);
+  }
+
+  private:
+  std::vector<DeclRef> decls;
+  std::vector<AstRef> stmts;
 };
 
 #endif /* !AST_HPP */

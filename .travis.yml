@@ -16,3 +16,6 @@ script:
   - mkdir build
   - docker-compose run workspace bash -c "cd /worktree/build && cmake .."
   - docker-compose run workspace bash -c "cd /worktree/build && VERBOSE=1 make"
+notifications:
+  slack:
+    secure: "P9p8kGq8ORomSzpNWn8IxUQcsFkjLJQJusRaITgatSvDDUPBKaNxf9d/qj/qMrzWZAES5XI8t5JKI5iSKv3Bg276Q+L3Bqh/f+SxRfUEznWVRBfFdHDwa5DHsKUgKyKmNPgk7gnWjB2jQ73wuHI42YsD66ExrS1j2FWB1nh9rlExgouGcQlba/PnjOtaBTYtCCnbTDlP/B/yWfzlNOHEvToCDzuQZ2MGe6EBA7bTGQ654K81gGLSc3oR0K4tt0mxgA4zJ2mBRf04VxNyUmIwqcDAjW9jW9UrHHB8YtslX8dJOywYgXeRuyT4VZrqjXd3DfLq8DrCpSYxcuhZMQCv1x2aCatxOlvEyYIr6ZhBJj9aTRMkXF9Qthnhn+xs8tAiWBx6VpZU4Hwf165F6IGsdoBISW4TuHgnnKDOCFlDZQbMcZ5vxFjgtuySpDzqiG12oSbKYm1NhJvz44j331j+GmOfK2j2/lmB2VGl/V9L2hXtTibGjOpjRfKcDi3zTkR8JVEsULRgfRsNXH+WHfNYzBf3cIU2aPrI6C8zxJZM19dbjxxYyFda7CQE7zE5YrIldKE+XF+b2eV8F+W3eGcL1G9yiwnBmXSDlKJtAfDC24PH45PvZJ/gh3FCCjVaaeTMZ7RiQ8SjCtnQ5sGPxzoJhNCnPzywAYhdp7eYCUdxJLU="

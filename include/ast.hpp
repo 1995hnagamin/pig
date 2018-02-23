@@ -1,10 +1,10 @@
 #ifndef AST_HPP
 #define AST_HPP
 
+#include "llvm/Support/Casting.h"
 #include <memory>
 #include <string>
 #include <vector>
-#include "llvm/Support/Casting.h"
 
 enum class AstKind {
   Variable,
@@ -18,7 +18,7 @@ enum class AstKind {
 
 class Ast;
 
-using AstRef = Ast*;
+using AstRef = Ast *;
 
 class Ast {
   public:
@@ -184,9 +184,10 @@ class JumpStmtAst : public Ast {
 
 class CompStmtAst : public Ast {
   public:
-  using DeclRef = VariableDeclAst*;
-  CompStmtAst(const std::vector<DeclRef> &ds, const std::vector<AstRef> &ss) :
-    Ast(AstKind::CompStmt), decls(ds), stmts(ss) {
+  using DeclRef = VariableDeclAst *;
+  CompStmtAst(const std::vector<DeclRef> &ds,
+              const std::vector<AstRef> &ss)
+      : Ast(AstKind::CompStmt), decls(ds), stmts(ss) {
   }
   ~CompStmtAst() override = default;
   AstRef

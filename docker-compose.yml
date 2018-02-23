@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  workspace:
+    image: hnagamin/llvm-3.9
+    volumes:
+      - .:/worktree

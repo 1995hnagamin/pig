@@ -6,8 +6,13 @@ addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
+services:
+  - docker
+env:
+  - DOCKER_COMPOSE_VERSION: 1.8.0
+install:
+  - docker pull hnagamin/llvm-3.9:latest
 script:
   - mkdir build
-  - cd build
-  - cmake ..
-  - VERBOSE=1 make
+  - docker-compose run workspace bash -c "cd /worktree/build && cmake .."
+  - docker-compose run workspace bash -c "cd /worktree/build && VERBOSE=1 make"

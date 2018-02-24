@@ -11,7 +11,7 @@ services:
 env:
   - DOCKER_COMPOSE_VERSION: 1.8.0
 install:
-  - docker pull hnagamin/llvm-3.9:latest
+  - docker pull hnagamin/pig-test-env:latest
 script:
   - mkdir build
   - docker-compose run workspace bash -c "cd /worktree/build && cmake .."

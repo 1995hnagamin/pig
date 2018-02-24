@@ -2,6 +2,6 @@ version: '2'
 
 services:
   workspace:
-    image: hnagamin/llvm-3.9
+    image: hnagamin/pig-test-env
     volumes:
       - .:/worktree
